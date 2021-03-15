@@ -1,11 +1,16 @@
 package devops.workshop.us63.controller;
 
+import java.io.IOException;
 import java.util.List;
+
+import javax.servlet.http.HttpServletResponse;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import devops.workshop.us63.model.Book;
@@ -24,5 +29,10 @@ public class BookRestController {
 		LOGGER.debug("Getting all available books");
 		return bookRepository.findAll();
 	}
+	
+	@RequestMapping(value ="", method = RequestMethod.GET)
+	public void test (HttpServletResponse response) throws IOException {
+		response.sendRedirect("/workshop-us63/frontend/index.html");
+    }
 
 }
