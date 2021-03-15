@@ -88,3 +88,15 @@ Example:
 	
 	# Push to Docker repository
 	docker push europe-west4-docker.pkg.dev/workshop-307013/docker-repository/workshop-us63:1.1.0
+	
+
+#### Deploy to APP Engine
+After pushed to Artifact Registry you are able to deploy using app engine
+
+
+
+
+
+After deployed you can test the service using a `cURL` HTTP request
+
+	curl --location --request GET 'https://workshop-us63-dot-workshop-307013.ey.r.appspot.com/workshop-us63/book
