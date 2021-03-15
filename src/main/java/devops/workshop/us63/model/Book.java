@@ -16,15 +16,17 @@ public class Book implements Serializable {
 	private Long id;
 	private String title;
 	private String author;
+	private String genre;
 
 	public Book() {
 		super();
 	}
 
-	public Book(String title, String author) {
+	public Book(String title, String author, String genre) {
 		super();
 		this.title = title;
 		this.author = author;
+		this.genre = genre;
 	}
 
 	public Long getId() {
@@ -50,6 +52,14 @@ public class Book implements Serializable {
 	public void setAuthor(String author) {
 		this.author = author;
 	}
+	
+	public String getGenre() {
+		return genre;
+	}
+
+	public void setGenre(String genre) {
+		this.genre = genre;
+	}
 
 	@Override
 	public int hashCode() {
@@ -57,6 +67,7 @@ public class Book implements Serializable {
 		int result = 1;
 		result = prime * result + ((author == null) ? 0 : author.hashCode());
 		result = prime * result + ((title == null) ? 0 : title.hashCode());
+		result = prime * result + ((genre == null) ? 0 : genre.hashCode());
 		return result;
 	}
 
@@ -79,12 +90,18 @@ public class Book implements Serializable {
 				return false;
 		} else if (!title.equals(other.title))
 			return false;
+		if (genre == null) {
+			if (other.genre != null)
+				return false;
+		} else if (!genre.equals(other.genre))
+			return false;
 		return true;
 	}
 
 	@Override
 	public String toString() {
 		return "Book [" + (title != null ? "title=" + title + ", " : "") + (author != null ? "author=" + author : "")
+				+ (genre != null ? "genre=" + genre : "")
 				+ "]";
 	}
 
