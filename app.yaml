@@ -1,0 +1,5 @@
+runtime: custom
+env: flexible 
+service: workshop-us63
+resources:
+  memory_gb: 1.5

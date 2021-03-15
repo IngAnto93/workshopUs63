@@ -2,3 +2,7 @@
 /*.classpath
 /*.project
 /.settings/*.prefs
+/.gcloudignore
+/.settings/org.eclipse.wst.common.project.facet.core.xml
+/.springBeans
+/build-11.bat
