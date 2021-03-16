@@ -30,7 +30,7 @@
 		<dependency>
 		    <groupId>org.springframework.boot</groupId>
 		    <artifactId>spring-boot-starter-test</artifactId>
-		 
+		 	<scope>test</scope>
 		    <!-- exclude junit 4 -->
 		 
 		    <exclusions>
@@ -45,24 +45,29 @@
 		<dependency>
 		    <groupId>org.junit.jupiter</groupId>
 		    <artifactId>junit-jupiter-api</artifactId>
+		    <scope>test</scope>
 		</dependency>
 		<dependency>
 		    <groupId>org.junit.jupiter</groupId>
 		    <artifactId>junit-jupiter-engine</artifactId>
+		    <scope>test</scope>
 		</dependency>
 		<dependency>
 		    <groupId>org.junit.platform</groupId>
 		    <artifactId>junit-platform-launcher</artifactId>
+		    <scope>test</scope>
 		</dependency>
 		<dependency>
             <groupId>org.junit.platform</groupId>
             <artifactId>junit-platform-runner</artifactId>
+            <scope>test</scope>
         </dependency>
 		 
 		<!-- Mockito extention -->
 		<dependency>
 		    <groupId>org.mockito</groupId>
 		    <artifactId>mockito-junit-jupiter</artifactId>
+		    <scope>test</scope>
 		</dependency>
 
 		<dependency>
@@ -96,6 +101,23 @@
 				<groupId>com.google.cloud.tools</groupId>
 				<artifactId>appengine-maven-plugin</artifactId>
 				<version>2.2.0</version>
+			</plugin>
+			<plugin>
+			    <groupId>org.apache.maven.plugins</groupId>
+			    <artifactId>maven-surefire-plugin</artifactId>
+			    <version>2.21.0</version>
+			    <dependencies>
+			        <dependency>
+			            <groupId>org.junit.platform</groupId>
+			            <artifactId>junit-platform-surefire-provider</artifactId>
+			            <version>1.2.0-M1</version>
+			        </dependency>
+			        <dependency>
+			            <groupId>org.junit.jupiter</groupId>
+			            <artifactId>junit-jupiter-engine</artifactId>
+			            <version>5.2.0-M1</version>
+			        </dependency>
+			    </dependencies>
 			</plugin>
 		</plugins>
 	</build>
