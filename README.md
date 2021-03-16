@@ -27,10 +27,12 @@ To achieve this you need to define an `app.xml` describing the features of the a
 Then, you need to create a build config file (`cloudbuild.yaml` or `cloudbuild.json`) in your project sources with the following structure:
 
 	steps:
+	- name: 'gcr.io/cloud-builders/docker'
+	  args: ['build', '-t', '${_REGION}-docker.pkg.dev/$PROJECT_ID/${_REPOSITORY}/${_IMAGE}:${_TAG}', '.']
+	- name: 'gcr.io/cloud-builders/docker'
+	  args: ['push', '${_REGION}-docker.pkg.dev/$PROJECT_ID/${_REPOSITORY}/${_IMAGE}:${_TAG}']
 	- name: 'gcr.io/cloud-builders/gcloud'
-	  args: ['app', 'deploy', '--project', '$PROJECT_ID']
-	images:
-	  - '${_REGION}-docker.pkg.dev/$PROJECT_ID/${_REPOSITORY}/${_IMAGE}:${_TAG}'
+	  args: ['app', 'deploy', '--project', '$PROJECT_ID', '--image-url', '${_REGION}-docker.pkg.dev/$PROJECT_ID/${_REPOSITORY}/${_IMAGE}:${_TAG}']
 	  
 **NOTE** that, given we are using a _**custom**_ runtime, you cannot have a `cloudbuild.yaml` and a `Dockerfile` in the same source folder; for this reason you can create a _**cloudbuild**_ folder where to put the `cloudbuild.yaml` you just created and point to this file when creating the build trigger.
 
@@ -68,6 +70,11 @@ After creating the trigger you can check it using the command `gcloud beta build
 You can also run this trigger manually use this command `gcloud beta builds triggers run deploy-image`.
 
 #### Check deployed application
-You can test that the deployed application is running at:
+You can check that the deployed application is running at:
 
 	https://workshop-us63-dot-workshop-307013.ey.r.appspot.com/workshop-us63
+	
+#### Change application background color
+To test all the setup you can, for intance, change the color of the background in the file `workshopUs63\src\main\resources\public\frontend\bootstrap\css\bootstrap.min.css`.
+
+Done this, push the change and the trigger will execute the build; wait until the build is completed to check if the modification is available in the deployed application.
