@@ -1,3 +1,0 @@
-runtime: java11
-env: standard
-service: gcphelloworld

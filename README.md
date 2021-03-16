@@ -11,48 +11,42 @@ This workshop repository contains exercises for a GCP DevOps CI/CD pipeline usin
 
 
 ## Exercise 10 - Build insight
-The purpose of this exercise is to using the Google Cloud Console to view information about your Cloud Build builds
+The purpose of this exercise is to using the Google Cloud Console to view information about your builds and their logs
+
+#### List builds
+You can view all builds by use the command:
+
+`gcloud builds list`
+
+and you obtain an output as the following:
+
+![alt text for screen readers](img/buildlist.JPG "gcloud builds list")
+
+Or You can filter this list using the option --filter, for example: 
+
+*	`gcloud builds list --filter status="FAILURE"`
+
+	to view only builds whose compilation failed 
+
+*	`gcloud builds list --filter "create_time>"2021-03-15T00:00:00+00:00" AND create_time<"2021-03-16T18:43:49+00:00""`
+
+	to view all builds created between 2021/03/15 and 2021/03/16
 
 
-#### Install tools
-If your build needs access to a private registry, install and configure the Docker credential helper for Cloud Build by running the commands:
+#### Build detail
+If you want to see detail of a specific build, you can use command:
 
-`gcloud components install docker-credential-gcr`
+`gcloud builds describe [BUILD_ID]`
+
+example:
+
+`gcloud builds describe [BUILD_ID]`
 
 and then
 
-`gcloud auth configure-docker`
+`gcloud builds describe da019b15-a210-4f04-a420-8fad8d9574ed`
+
+and as response you obtain some information of build
+
+![alt text for screen readers](img/describe.JPG "gcloud builds describe [BUILD_ID]")
 	
-Response:
-
-	Created [https://cloudbuild.googleapis.com/v1/projects/workshop-307013/triggers/56a0a97f-d602-4178-95e8-7f479133bedf].
-	NAME              CREATE_TIME                STATUS
-	build-push-image  2021-03-16T10:40:03+00:00
-	
-After creating the trigger you can check it using the command `gcloud beta builds triggers describe build-push-image`; you should get a response similar to the following:
-
-	createTime: '2021-03-16T10:40:03.556457361Z'
-	filename: cloudbuild.yaml
-	id: 56a0a97f-d602-4178-95e8-7f479133bedf
-	name: build-push-image
-	substitutions:
-	  _IMAGE: workshop-us63
-	  _REGION: europe-west4
-	  _REPOSITORY: docker-repository
-	  _TAG: 1.1.0
-	triggerTemplate:
-	  branchName: exercise-8
-	  projectId: workshop-307013
-	  repoName: github_inganto93_workshopus63
-
-You can also run this trigger manually use this command `gcloud beta builds triggers run build-push-image`.
-
-#### Check pushed image
-You can check that the image was successfully pushed to the repository using the following command `gcloud artifacts docker images list` as follow:
-
-	gcloud artifacts docker images list europe-west4-docker.pkg.dev/workshop-307013/docker-repository/workshop-us63 --include-tags
-
-Response:
-
-	IMAGE                                                                        DIGEST                                                                   TAGS    CREATE_TIME          UPDATE_TIME
-	europe-west4-docker.pkg.dev/workshop-307013/docker-repository/workshop-us63  sha256:180649ed9c121c4dd16953e6a88dab3f490050208a67ed9ca4779b735beb00cd  1.1.0   2021-03-16T12:08:54  2021-03-16T12:08:54
