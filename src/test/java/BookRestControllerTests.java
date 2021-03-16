@@ -19,7 +19,7 @@ import devops.workshop.us63.repository.BookRepository;
 
 @ExtendWith(MockitoExtension.class)
 @RunWith(JUnitPlatform.class)
-public class BookRestControllerTest {
+public class BookRestControllerTests {
 	
 	    @InjectMocks
 	    BookRestController bookController;
