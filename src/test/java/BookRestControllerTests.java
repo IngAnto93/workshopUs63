@@ -53,7 +53,7 @@ public class BookRestControllerTests {
 	        assertThat(result.get(1).getTitle())
             				.isEqualTo(book2.getTitle());
 	        
-	        assertThat(result.get(2).getTitle())
+	        assertThat(result.get(3).getTitle())
 							.isEqualTo(book3.getTitle());
 	    }
 
