@@ -1,5 +1,7 @@
 steps:
+- name: 'gcr.io/cloud-builders/docker'
+  args: ['build', '-t', '${_REGION}-docker.pkg.dev/$PROJECT_ID/${_REPOSITORY}/${_IMAGE}:${_TAG}', '.']
 - name: 'gcr.io/cloud-builders/gcloud'
-  args: ['app', 'deploy', '--project', '$PROJECT_ID']
+  args: ['app', 'deploy', '--project', '$PROJECT_ID', '--image-url', '${_REGION}-docker.pkg.dev/$PROJECT_ID/${_REPOSITORY}/${_IMAGE}:${_TAG}']
 images:
   - '${_REGION}-docker.pkg.dev/$PROJECT_ID/${_REPOSITORY}/${_IMAGE}:${_TAG}'
