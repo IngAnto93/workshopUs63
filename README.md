@@ -56,7 +56,7 @@ As you can see, there is no more need to use Cloud Shell: it's simply Git.
 
 Now, if you go in your GCP Console and access to Cloud Source Repository, you should see the newly created repository. Click on its name and let's see what it looks like:
 
-![](C:\Users\PosillipoAn\Desktop\NTT-DevOps\Task-63-Workshop-Google-Source-Build-Registry\workshopUs63\assets\images\Capture1.PNG)
+![](./assets/images/Capture1.PNG)
 
 You can view many details, like: branches, all files in your repository, their history, every commit detail and more. In this exercise, we are going to use a special feature of Cloud Source Repository: **Search Code**.
 
