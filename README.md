@@ -1,5 +1,5 @@
 
-# Workshop - CI/CD with Google Cloud Platform
+# Install Google Cloud SDK
 
 This workshop repository contains exercises for a GCP DevOps CI/CD pipeline using mainly:
 
@@ -7,10 +7,6 @@ This workshop repository contains exercises for a GCP DevOps CI/CD pipeline usin
 ## Requirement
 
 *   Google Cloud Platform User Account
-*   Google Cloud Platform SDK (>= 331.0.0)
-*	Docker
-*	JAVA 1.8
-*   Maven 3
 
 ## Workshop exercises
 
