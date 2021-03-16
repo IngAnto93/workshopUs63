@@ -1,4 +1,4 @@
-runtime: java8
+runtime: custom
 env: flexible 
 service: workshop-us63
 resources:
