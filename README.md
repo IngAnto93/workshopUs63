@@ -24,7 +24,19 @@ You should get on a new page, where you can choose repository name, its visibili
 
 <img src="./assets/images/Capture2.PNG" style="zoom:80%;" />
 
-Click on Create repository.
+Click on Create repository. Now, you can clone this repository on your local machine, by getting its url from `Code` button as follows:
+
+![](./assets/images/Capture2.1.PNG)
+
+
+
+Copy-paste in the cloned repository the content of this Exercise Repository. This will be useful for next exercises. Then push to remote repository.
+
+```
+git add .
+git commit -m "First commit"
+git push origin main
+```
 
 When you mirror a repository, you must provide GitHub authentication credentials. These credentials let Cloud Source Repositories access the contents of the GitHub repository.
 
