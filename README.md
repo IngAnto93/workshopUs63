@@ -30,6 +30,8 @@ For instance, `$PROJECT_ID` is a built-in one and is substituted with the ID of 
 
 Cloud Build allows you to build a Docker image using just a Dockerfile. You don't require a separate build config file.
 
+**NOTE** that there in no explicit call to `docker push`, in fact, if you define in the _**images**_ section the newly built image, Cloud Build will automatically push it to the Artifact Registry repository.
+
 #### Creating the build trigger
 To be able to run the build as we defined, you can create a build trigger that will execute any time it detects a push on the branch with you configure it. You can create it running `gcloud builds triggers create` command as follow:
 
