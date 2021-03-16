@@ -4,7 +4,7 @@
 This workshop repository contains exercises for a GCP DevOps CI/CD pipeline using mainly:
 
 
-## Requirement ggg
+## Requirement
 
 *	Google Cloud Platform User Account
 *	Google Cloud Platform SDK (>= 331.0.0)
