@@ -11,7 +11,7 @@ This workshop repository contains exercises for a GCP DevOps CI/CD pipeline usin
 
 
 ## Exercise 10 - Build insight
-The purpose of this exercise is to use Cloud Build on your local machine.
+The purpose of this exercise is to using the Google Cloud Console to view information about your Cloud Build builds
 
 
 #### Install tools
