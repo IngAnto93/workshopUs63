@@ -12,7 +12,7 @@ This workshop repository contains exercises for a GCP DevOps CI/CD pipeline usin
 *	JAVA 1.8
 *   Maven 3
 
-## Excercise 1 - Working with artifact registry
+## Excercise 4 - Working with artifact registry
 To start to push your Docker or specific language artifacts you need to create a repository using the `gcloud artifacts` command 
 
 1.  **Creating a GCP Docker Artifact repository** 
