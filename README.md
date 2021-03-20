@@ -80,7 +80,7 @@ After configuring **Docker** your are able to build and push the image to your *
 
 Example:
 
-	europe-west4-docker.pkg.dev/workshop-307013/docker-repository/workshop-us63:1.1.0
+	europe-west4-docker.pkg.dev/workshop-307013/docker-repository/workshop-us63:1.5.0
   	
 
 ###### Pushing Docker Image to **Artifact Registry**
@@ -89,10 +89,10 @@ Example:
 	docker build -t workshop-us63 .
 	
 	# Tag the image
-	docker tag workshop-us63 europe-west4-docker.pkg.dev/workshop-307013/docker-repository/workshop-us63:1.1.0
+	docker tag workshop-us63 europe-west4-docker.pkg.dev/workshop-307013/docker-repository/workshop-us63:1.5.0
 	
 	# Push to Docker repository
-	docker push europe-west4-docker.pkg.dev/workshop-307013/docker-repository/workshop-us63:1.1.0
+	docker push europe-west4-docker.pkg.dev/workshop-307013/docker-repository/workshop-us63:1.5.0
 	
 
 ##### 5. Deploy to APP Engine
@@ -108,5 +108,14 @@ After deployed you can test the service using a `cURL` HTTP request
 ##### 6. Clean up
 After testing your app service, delete it to avoid resource consumptions and costs
 
-	gcloud app services delete workshop-us63-exercise-5
+-**Delete docker images:**
+
+	gcloud artifacts docker images delete europe-west4-docker.pkg.dev/workshop-307013/docker-repository/workshop-us63:1.5.0
+
+**If previus tagged have not been deleted you need to force tag deletion using `--delete-tags`**
+
+	gcloud artifacts docker images delete europe-west4-docker.pkg.dev/workshop-307013/docker-repository/workshop-us63:1.5.0 --delete-tags
+-**Delete the created Docker repository**:
+
+	gcloud artifacts repositories delete docker-repository --location europe-west4
 	
