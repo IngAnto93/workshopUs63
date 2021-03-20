@@ -112,13 +112,16 @@ Vulnerability report is also available on Google Cloud Console as shown below:
 ![N|Solid](assets/images/vulnerabilities.png)
 
 
-
 ##### 4. Clean up
-	gcloud artifacts docker images delete europe-west4-docker.pkg.dev/workshop-307013/docker-repository/workshop-us63:1.7.0
 
-	gcloud artifacts repositories delete docker-repository --location europe-west4
+-**Delete docker images:**
+
+	gcloud artifacts docker images delete europe-west4-docker.pkg.dev/workshop-307013/docker-repository/workshop-us63:1.7.0
 
 **If previus tagged have not been deleted you need to force tag deletion using `--delete-tags`**
 
-	gcloud artifacts docker images delete europe-west4-docker.pkg.dev/workshop-307013/docker-repository/workshop-us63:1.7.0 --delete-tags	
+	gcloud artifacts docker images delete europe-west4-docker.pkg.dev/workshop-307013/docker-repository/workshop-us63:1.7.0 --delete-tags
+-**Delete the created Docker repository**:
+
+	gcloud artifacts repositories delete docker-repository --location europe-west4
 
