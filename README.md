@@ -102,7 +102,7 @@ After adding the Docker image on Artifact Registry run `gcloud app deploy` in or
 
 	runtime: custom
 	env: flexible 
-	service: workshop-us63-exercise-5
+	service: workshop-us63-exercise-6
 	resources:
   	memory_gb: 1.5
 
@@ -114,5 +114,17 @@ After deployed you can test the service using a `cURL` HTTP request
 ##### 6. Clean up
 After testing your app service, delete it to avoid resource consumptions and costs
 
-	gcloud app services delete workshop-us63-exercise-5
+-**Delete app engine service:**
+
+	gcloud app services delete workshop-us63-exercise-6
+
+-**Delete docker images:**
+
 	gcloud artifacts docker images delete europe-west4-docker.pkg.dev/workshop-307013/docker-repository/workshop-us63:1.6.0
+
+**If previus tagged have not been deleted you need to force tag deletion using `--delete-tags`**
+
+	gcloud artifacts docker images delete europe-west4-docker.pkg.dev/workshop-307013/docker-repository/workshop-us63:1.6.0 --delete-tags
+-**Delete the created Docker repository**:
+
+	gcloud artifacts repositories delete docker-repository --location europe-west4
