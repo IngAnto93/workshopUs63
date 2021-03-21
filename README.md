@@ -26,7 +26,7 @@ Before starting, you need to enable the cloud services (if not already enabled) 
 	
 #### 2. Defining the app config
 
-To run an application on App Engine you need to define `app.xml` describing the features of the application you are going to deploy:
+To run an application on App Engine, you need to define `app.xml` describing the features of the application you are going to deploy:
 
 	runtime: custom
 	env: flexible 
@@ -106,11 +106,11 @@ Once the build has successfully completed, you can check that the deployed appli
 
 #### 7. Cleaning up resources
 
-After checking the image, delete it to avoid resource consumptions and costs.
+After checking the application, delete it to avoid resource consumptions and costs.
 
 ##### Delete trigger:
 
-	gcloud beta builds triggers delete build-push-image
+	gcloud beta builds triggers delete deploy-image
 
 ##### Delete docker image:
 
