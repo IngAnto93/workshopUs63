@@ -89,7 +89,7 @@ You can access the GCP console and go to the Cloud Build section to check that a
 
 ![N|Solid](assets/images/build.png)
 
-#### 5. Check pushed image
+#### 5. Checking pushed image
 
 Once the build has successfully completed, you can check that the image was pushed to the repository using the command `gcloud artifacts docker images list` as follows:
 
@@ -100,7 +100,7 @@ Response:
 	IMAGE                                                                        DIGEST                                                                   TAGS    CREATE_TIME          UPDATE_TIME
 	europe-west4-docker.pkg.dev/workshop-307013/docker-repository/workshop-us63  sha256:180649ed9c121c4dd16953e6a88dab3f490050208a67ed9ca4779b735beb00cd  1.8.0   2021-03-16T12:08:54  2021-03-16T12:08:54
 	
-#### 6. Clean up resources
+#### 6. Cleaning up resources
 
 After checking the image, delete it to avoid resource consumptions and costs.
 
