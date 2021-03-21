@@ -11,18 +11,19 @@ This workshop repository contains exercises for a GCP DevOps CI/CD pipeline usin
 
 
 ## Exercise 10 - Build insight
-The purpose of this exercise is to using the Google Cloud Console to view information about your builds and their logs
+The purpose of this exercise is to use the Google Cloud Console to view information about your builds and their logs.
 
-#### List builds
-You can view all builds by use the command:
+#### Listing builds
 
-`gcloud builds list`
+You can view all builds using the following command:
 
-and you obtain an output as the following:
+	`gcloud builds list`
+
+You should get an output as the following:
 
 ![alt text for screen readers](img/buildlist.JPG "gcloud builds list")
 
-Or You can filter this list using the option --filter, for example: 
+You can also filter this list using the option __--filter__, for example:
 
 *	`gcloud builds list --filter status="FAILURE"`
 
@@ -32,21 +33,16 @@ Or You can filter this list using the option --filter, for example:
 
 	to view all builds created between 2021/03/15 and 2021/03/16
 
+#### Viewing build details
 
-#### Build detail
-If you want to see detail of a specific build, you can use command:
+If you want to see the details of a specific build, you can use the command:
 
-`gcloud builds describe [BUILD_ID]`
+	`gcloud builds describe [BUILD_ID]`
 
-example:
+You can retrieve the build id from the list you got with the previous operation.
 
-`gcloud builds describe [BUILD_ID]`
+	`gcloud builds describe da019b15-a210-4f04-a420-8fad8d9574ed`
 
-and then
+As response, you get all the informations about your build:
 
-`gcloud builds describe da019b15-a210-4f04-a420-8fad8d9574ed`
-
-and as response you obtain some information of build
-
-![alt text for screen readers](img/describe.JPG "gcloud builds describe [BUILD_ID]")
-	
+![alt text for screen readers](img/describe.JPG "gcloud builds describe [BUILD_ID]")	
