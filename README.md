@@ -43,7 +43,7 @@ Cloud Build allows you also to build a Docker image using just a **Dockerfile**.
 
 #### 3. Creating the build trigger
 
-To be able to run the build as you defined, you can create a build trigger that will execute any time it detects a push on the branch on which you configure it. You can create it running `gcloud builds triggers create` command as follow:
+To be able to run the build as you defined, you can create a build trigger that will execute any time it detects a push on the branch on which you configure it. You can create it running `gcloud builds triggers create` command as follows:
 
 	gcloud beta builds triggers create cloud-source-repositories --name build-push-image /
 	--repo github_inganto93_workshopus63 /
@@ -91,7 +91,7 @@ You can access the GCP console and go to the Cloud Build section to check that a
 
 #### 5. Check pushed image
 
-You can check that the image was successfully pushed to the repository using the command `gcloud artifacts docker images list` as follow:
+Once the build has successfully completed, you can check that the image was pushed to the repository using the command `gcloud artifacts docker images list` as follows:
 
 	gcloud artifacts docker images list europe-west4-docker.pkg.dev/workshop-307013/docker-repository/workshop-us63 --include-tags
 
