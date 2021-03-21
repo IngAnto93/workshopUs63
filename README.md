@@ -17,7 +17,7 @@ The purpose of this exercise is to use the Google Cloud Console to view informat
 
 You can view all builds using the following command:
 
-	`gcloud builds list`
+	gcloud builds list
 
 You should get an output as the following:
 
@@ -37,11 +37,11 @@ You can also filter this list using the option __--filter__, for example:
 
 If you want to see the details of a specific build, you can use the command:
 
-	`gcloud builds describe [BUILD_ID]`
+	gcloud builds describe [BUILD_ID]
 
 You can retrieve the build id from the list you got with the previous operation.
 
-	`gcloud builds describe da019b15-a210-4f04-a420-8fad8d9574ed`
+	gcloud builds describe da019b15-a210-4f04-a420-8fad8d9574ed
 
 As response, you get all the informations about your build:
 
