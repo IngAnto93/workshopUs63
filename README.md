@@ -12,7 +12,7 @@ This workshop repository contains exercises for a GCP DevOps CI/CD pipeline usin
 *	JAVA 1.8
 *   Maven 3
 
-## Excercise 6 - Scanning vulnerabilities
+## Excercise 7 - Scanning vulnerabilities
 **Artifact Registry** enable to scan pushed images using the **GCP Container Scanning**
 
 ##### 1. Enabling container scan
@@ -22,6 +22,7 @@ In order to scan container images **containerscanning.googleapis.com** must be e
 
 
 ##### 2. Pushing Docker image to Artifact Registry to scan
+
 ###### Enabling Artifact Registry Service
 To trigger a container scan for an Artifact registry Docker image, enable Artifact Registry (if not already enabled) executing the following command:
 
@@ -34,16 +35,7 @@ To trigger a container scan for an Artifact registry Docker image, enable Artifa
 	--description="GCP Artifacts repository for Docker images" \
 	--location europe-west4
 
-###### Creating a GCP Maven Artifact repository
-
-	gcloud artifacts repositories create maven-repository \
-	--repository-format=maven \
-	--description="GCP Artifacts repository for Maven artifacts" \
-	--location europe-west4
-
 After creating the Docker repository you can check for the created repository with `gcloud artifacts repositories list` and set it as defualt for your Cloud SDK
-
-List repositoies:
 
 	gcloud artifacts repositories list --location europe-west4
 
@@ -114,14 +106,11 @@ Vulnerability report is also available on Google Cloud Console as shown below:
 
 ##### 4. Clean up
 
--**Delete docker images:**
+- **Delete docker images:**
 
-	gcloud artifacts docker images delete europe-west4-docker.pkg.dev/workshop-307013/docker-repository/workshop-us63:1.7.0
+	  gcloud artifacts docker images delete europe-west4-docker.pkg.dev/workshop-307013/docker-repository/workshop-us63:1.7.0
 
-**If previus tagged have not been deleted you need to force tag deletion using `--delete-tags`**
+- **Delete the created Docker repository**:
 
-	gcloud artifacts docker images delete europe-west4-docker.pkg.dev/workshop-307013/docker-repository/workshop-us63:1.7.0 --delete-tags
--**Delete the created Docker repository**:
-
-	gcloud artifacts repositories delete docker-repository --location europe-west4
+	  gcloud artifacts repositories delete docker-repository --location europe-west4
 
