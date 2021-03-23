@@ -13,25 +13,17 @@ This workshop repository contains exercises for a GCP DevOps CI/CD pipeline usin
 *   Maven 3
 
 ## Excercise 5 - Working with artifact registry
-To start to push your Docker or specific language artifacts you need to create a repository using the `gcloud artifacts` command 
-
-##### 1. Enabling Artifact Registry Service
-Before start to work with Artifact Registry, enable the related cloud service (if not already enabled) executing the following command:
+In order to start push Docker images artifact registry service must be enabled
+(if not already enabled) executing the following command:
 
 	gcloud services enable artifactregistry.googleapis.com
 
-##### 2. Creating a GCP Docker Artifact repository
+##### 1. Creating a GCP Docker Artifact repository
+In order to start push Docker images a Docker repository must be created executing the below `gcloud` command:
 
 	gcloud artifacts repositories create docker-repository \
 	--repository-format=docker \
 	--description="GCP Artifacts repository for Docker images" \
-	--location europe-west4
-
-##### 3. Creating a GCP Maven Artifact repository
-
-	gcloud artifacts repositories create maven-repository \
-	--repository-format=maven \
-	--description="GCP Artifacts repository for Maven artifacts" \
 	--location europe-west4
 
 After creating the Docker repository you can check for the created repository with `gcloud artifacts repositories list` and set it as defualt for your Cloud SDK
@@ -48,7 +40,7 @@ Set as default
 	gcloud config set artifacts/repository docker-repository
 	
 
-##### 4. Pushing Docker image to a GCP Artifact Docker repository
+##### 2. Pushing Docker image to a GCP Artifact Docker repository
 To be able to push builded docker images Docker must be configured running `gcloud auth configure-docker` command as below
 
 	gcloud auth configure-docker europe-west4-docker.pkg.dev
@@ -93,29 +85,23 @@ Example:
 	
 	# Push to Docker repository
 	docker push europe-west4-docker.pkg.dev/workshop-307013/docker-repository/workshop-us63:1.5.0
+
+##### 4. Check for pushed Docker image
+	 gcloud artifacts docker images list
 	
 
-##### 5. Deploy to APP Engine
-After pushed to Artifact Registry you are able to deploy using app engine
-	
-	gcloud app deploy
-
-After deployed you can test the service using a `cURL` HTTP request
-
-	curl --location --request GET 'https://workshop-us63-dot-workshop-307013.ey.r.appspot.com/workshop-us63/book
-
-
-##### 6. Clean up
+##### 4. Clean up
 After testing your app service, delete it to avoid resource consumptions and costs
 
--**Delete docker images:**
+- **Delete docker images:**
 
-	gcloud artifacts docker images delete europe-west4-docker.pkg.dev/workshop-307013/docker-repository/workshop-us63:1.5.0
+		gcloud artifacts docker images delete europe-west4-docker.pkg.dev/workshop-307013/docker-repository/workshop-us63:1.5.0
 
-**If previus tagged have not been deleted you need to force tag deletion using `--delete-tags`**
+	**If previus tagged have not been deleted you need to force tag deletion using `--delete-tags`**
 
-	gcloud artifacts docker images delete europe-west4-docker.pkg.dev/workshop-307013/docker-repository/workshop-us63:1.5.0 --delete-tags
--**Delete the created Docker repository**:
+		gcloud artifacts docker images delete europe-west4-docker.pkg.dev/workshop-307013/docker-repository/workshop-us63:1.5.0 --delete-tags
 
-	gcloud artifacts repositories delete docker-repository --location europe-west4
+- **Delete the created Docker repository**:
+
+		gcloud artifacts repositories delete docker-repository --location europe-west4
 	
