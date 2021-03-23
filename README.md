@@ -16,27 +16,28 @@ This workshop repository contains exercises for a GCP DevOps CI/CD pipeline usin
 To start you APP engine a Docker image must be added to the **Artifact Registry** repository 
 
 
-##### 1. Pushing Docker image to Artifact Registry
-###### Enabling Artifact Registry Service
-Before start to work with Artifact Registry, enable the related cloud service (if not already enabled) executing the following command:
-
-	gcloud services enable artifactregistry.googleapis.com
-
-###### Creating a GCP Docker Artifact repository
+##### 1. Creating a GCP Docker Artifact repository
+In order to start push Docker images a Docker repository must be created executing the below `gcloud` command:
 
 	gcloud artifacts repositories create docker-repository \
 	--repository-format=docker \
 	--description="GCP Artifacts repository for Docker images" \
 	--location europe-west4
 
-###### Creating a GCP Maven Artifact repository
-
-	gcloud artifacts repositories create maven-repository \
-	--repository-format=maven \
-	--description="GCP Artifacts repository for Maven artifacts" \
-	--location europe-west4
-
 After creating the Docker repository you can check for the created repository with `gcloud artifacts repositories list` and set it as defualt for your Cloud SDK
+
+List repositoies:
+
+	gcloud artifacts repositories list --location europe-west4
+
+	REPOSITORY         FORMAT  DESCRIPTION                                 LOCATION      LABELS  ENCRYPTION          	CREATE_TIME          UPDATE_TIME
+	docker-repository  DOCKER  GCP Artifacts repository for Docker images  europe-west4          Google-managed key  2021-03-13T15:57:43  2021-03-13T15:57:43
+
+Set as default
+	
+	gcloud config set artifacts/repository docker-repository
+
+After creating the Docker repository you can check for executing the `gcloud artifacts repositories list` command and set it as defualt for your Cloud SDK
 
 List repositoies:
 
@@ -94,7 +95,7 @@ Example:
 	docker tag workshop-us63 europe-west4-docker.pkg.dev/workshop-307013/docker-repository/workshop-us63:1.6.0
 	
 	# Push to Docker repository
-	docker push europe-west4-docker.pkg.dev/workshop-307013/docker-repository/workshop-us63:1.1.0
+	docker push europe-west4-docker.pkg.dev/workshop-307013/docker-repository/workshop-us63:1.6.0
 	
 
 ##### 2. Deploy to APP Engine
@@ -106,7 +107,7 @@ After adding the Docker image on Artifact Registry run `gcloud app deploy` in or
 	resources:
   	memory_gb: 1.5
 
-After deployed you can test the service using a `cURL` HTTP request
+After deployed you can list the created instance using the `gcloud app instances list` command and test the service using a `cURL` HTTP request calling the generated app engine url as shown in the sample **curl** call below:
 
 	curl --location --request GET 'https://workshop-us63-dot-workshop-307013.ey.r.appspot.com/workshop-us63/book
 
@@ -114,17 +115,18 @@ After deployed you can test the service using a `cURL` HTTP request
 ##### 6. Clean up
 After testing your app service, delete it to avoid resource consumptions and costs
 
--**Delete app engine service:**
+- **Delete app engine service:**
 
-	gcloud app services delete workshop-us63-exercise-6
+	  gcloud app services delete workshop-us63-exercise-6
 
--**Delete docker images:**
+- **Delete docker images:**
 
-	gcloud artifacts docker images delete europe-west4-docker.pkg.dev/workshop-307013/docker-repository/workshop-us63:1.6.0
+	  gcloud artifacts docker images delete europe-west4-docker.pkg.dev/workshop-307013/docker-repository/workshop-us63:1.6.0
 
-**If previus tagged have not been deleted you need to force tag deletion using `--delete-tags`**
+	**If previus tagged have not been deleted you need to force tag deletion using `--delete-tags`**
 
-	gcloud artifacts docker images delete europe-west4-docker.pkg.dev/workshop-307013/docker-repository/workshop-us63:1.6.0 --delete-tags
--**Delete the created Docker repository**:
+	  gcloud artifacts docker images delete europe-west4-docker.pkg.dev/workshop-307013/docker-repository/workshop-us63:1.6.0 --delete-tags
 
-	gcloud artifacts repositories delete docker-repository --location europe-west4
+- **Delete the created Docker repository**:
+
+	  gcloud artifacts repositories delete docker-repository --location europe-west4
