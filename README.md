@@ -123,10 +123,6 @@ After testing your app service, delete it to avoid resource consumptions and cos
 
 	  gcloud artifacts docker images delete europe-west4-docker.pkg.dev/workshop-307013/docker-repository/workshop-us63:1.6.0
 
-	**If previus tagged have not been deleted you need to force tag deletion using `--delete-tags`**
-
-	  gcloud artifacts docker images delete europe-west4-docker.pkg.dev/workshop-307013/docker-repository/workshop-us63:1.6.0 --delete-tags
-
 - **Delete the created Docker repository**:
 
 	  gcloud artifacts repositories delete docker-repository --location europe-west4
