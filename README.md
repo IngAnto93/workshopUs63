@@ -16,7 +16,7 @@ This workshop repository contains exercises for a GCP DevOps CI/CD pipeline usin
 *   Latest version of Git
 *   Enable Cloud Source API
 
-## Exercise 1 - Setting up a Cloud Source repository
+## Exercise 2 - Setting up a Cloud Source repository
 
 Launch your Google Cloud SDK Shell and make sure you are using correct project by launching:
 
