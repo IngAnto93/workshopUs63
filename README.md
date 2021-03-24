@@ -12,7 +12,7 @@ This workshop repository contains exercises for a GCP DevOps CI/CD pipeline usin
 *	JAVA 1.8
 *   Maven 3
 
-## Exercise 2 - Mirroring a GitHub repository
+## Exercise 3 - Mirroring a GitHub repository
 
 Go on GitHub and Sign In or Create a new account. 
 
