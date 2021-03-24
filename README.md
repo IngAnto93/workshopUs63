@@ -13,7 +13,7 @@ This workshop repository contains exercises for a GCP DevOps CI/CD pipeline usin
 *   Maven 3
 *   Clone https://github.com/IngAnto93/workshopUs63 on local machine
 
-## Exercise 12 - Run test with Maven, Junit and Mockito
+## Exercise 11 - Run test with Maven, Junit and Mockito
 
 First of all, let's see our *cloudbuild.yaml*:
 
