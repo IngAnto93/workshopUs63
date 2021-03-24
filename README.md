@@ -14,7 +14,7 @@ This workshop repository contains exercises for a GCP DevOps CI/CD pipeline usin
 *   Maven 3
 *   Enable Debugger API for your Google Cloud project and configure your environment and your app. These steps vary by language or framework used to implement the app. For Java and App Engine Standard, you just need to enable the Cloud Debugger API. 
 
-## Exercise 3 - Debugging code
+## Exercise 4 - Debugging code
 
 If you store your app's code in Cloud Source Repositories, you can use the source control to perform Cloud Debugger tasks. These include taking and viewing debug snapshots, adding logpoints, and viewing logpoint outputs. 
 
