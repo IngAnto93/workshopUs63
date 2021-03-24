@@ -9,7 +9,7 @@ This workshop repository contains exercises for a GCP DevOps CI/CD pipeline usin
 *	Google Cloud Platform User Account
 
 
-## Exercise - 1 : Install Google Cloud SDK
+## Exercise 1 - Install Google Cloud SDK
 The purpose of this document is to guide user to install google cloud sdk on S.O. Windows
 
 #### Download
