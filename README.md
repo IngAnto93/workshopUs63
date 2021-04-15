@@ -30,7 +30,7 @@ Click on Create repository. Now, you can clone this repository on your local mac
 
 
 
-Copy-paste in the cloned repository the content of this Exercise Repository. This will be useful for next exercises. Then push to remote repository.
+Copy-paste in the cloned repository the content of this Exercise Repository. You should have already cloned this repo in the last exercise, so just checkout on branch exercise-3 and copy all this code in order to paste it in your GitHub repository. Try to use the same branches structure, so create the branch exercise-3 e then push to your remote repository.
 
 ```
 git add .
