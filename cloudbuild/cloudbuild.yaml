@@ -7,8 +7,9 @@ steps:
   args:
   - run
   - --filename=cloudbuild/gke
-  - --location=${_LOCATION}
+  - --location=${_CLUSTER_REGION}
   - --cluster=${_GKE_CLUSTER}
 substitutions:
-    _LOCATION: europe-west4-a
+    _CLUSTER_REGION: europe-west4-a
+    _LOCATION: europe-west4
     _GKE_CLUSTER: workshop-gke-cluster-1
