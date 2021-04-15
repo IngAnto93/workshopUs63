@@ -3,7 +3,6 @@ steps:
   args: ['build', '-t', '${_LOCATION}-docker.pkg.dev/$PROJECT_ID/${_REPOSITORY}/${_IMAGE}:${_TAG}', '.']
 - name: 'gcr.io/cloud-builders/docker'
   args: ['push', '${_LOCATION}-docker.pkg.dev/$PROJECT_ID/${_REPOSITORY}/${_IMAGE}:${_TAG}']
-- name: 'gcr.io/cloud-builders/gcloud'
 - name: "gcr.io/cloud-builders/gke-deploy"
   args:
   - run
