@@ -44,7 +44,18 @@ warning: You appear to have cloned an empty repository.
 Project [workshop-307013] repository [hello-world] was cloned to [C:\Users\Workshop\AppData\Local\Google\Cloud SDK\hello-world].
 ```
 
-At this point, we can add code in this local repository. Go to the location path returned from previous step and copy-paste, in this directory, the content of this GitHub repository. After that, launch the following commands in order to push all on remote Google Cloud Source Repository:
+At this point, we can add code in this local repository. 
+
+You should clone this GitHub Repository and then switch on branch exercise2:
+
+```
+git clone https://github.com/IngAnto93/workshopUs63.git
+git checkout -b exercise-2
+```
+
+Now, go to the location path returned from previous step and copy-paste, in this directory, the content of this GitHub repository that you cloned.
+
+After that, launch the following commands in order to push all on remote Google Cloud Source Repository:
 
 ```
 git add .
