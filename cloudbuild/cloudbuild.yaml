@@ -4,4 +4,12 @@ steps:
 - name: 'gcr.io/cloud-builders/docker'
   args: ['push', '${_LOCATION}-docker.pkg.dev/$PROJECT_ID/${_REPOSITORY}/${_IMAGE}:${_TAG}']
 - name: 'gcr.io/cloud-builders/gcloud'
-  args: ['app', 'deploy', '--project', '$PROJECT_ID', '--image-url', '${_LOCATION}-docker.pkg.dev/$PROJECT_ID/${_REPOSITORY}/${_IMAGE}:${_TAG}']
+- name: "gcr.io/cloud-builders/gke-deploy"
+  args:
+  - run
+  - --filename=../gke/deployment.yaml
+  - --location=${_LOCATION}
+  - --cluster=${_GKE_CLUSTER}
+substitutions:
+    _LOCATION: europe-west4-a
+    _GKE_CLUSTER: workshop-gke-cluster-1
