@@ -1,0 +1,10 @@
+ steps:
+ - name: "gcr.io/cloud-builders/gke-deploy"
+   args:
+   - run
+   - --filename=gke/deployment.yaml
+   - --location=${_LOCATION}
+   - --cluster=${_GKE_CLUSTER}
+ substitutions:
+    _LOCATION: europe-west4-a
+    _GKE_CLUSTER: workshop-gke-cluster-1

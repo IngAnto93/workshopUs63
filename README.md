@@ -12,9 +12,7 @@ This workshop repository contains exercises for a GCP DevOps CI/CD pipeline usin
 *	JAVA 1.8
 *   Maven 3
 
-## Excercise 6 - Deploying from Artifact Registry to App Engine
-To start you APP engine a Docker image must be added to the **Artifact Registry** repository 
-
+## Excercise 6 - Deploying from Artifact Registry to GKE
 
 ##### 1. Creating a GCP Docker Artifact repository
 In order to start push Docker images a Docker repository must be created executing the below `gcloud` command:
@@ -98,26 +96,60 @@ Example:
 	docker push europe-west4-docker.pkg.dev/workshop-307013/docker-repository/workshop-us63:1.6.0
 	
 
-##### 2. Deploy to APP Engine
-After adding the Docker image on Artifact Registry run `gcloud app deploy` in order to deploy the **APP Engine** instance as **custom** runtime as defined in the below yaml:
+###### Deploying container image to Google Cloud Kubernetes (GKE)
+After adding the pushed Docker image on Artifact Registry your are able to deploy to GCP using GKE or others available compute services
 
-	runtime: custom
-	env: flexible 
-	service: workshop-us63-exercise-6
-	resources:
-  	memory_gb: 1.5
+In this case we'll deploy to GKE executing the following steps:
 
-After deployed you can list the created instance using the `gcloud app instances list` command and test the service using a `cURL` HTTP request calling the generated app engine url as shown in the sample **curl** call below:
+###### 1. Configuring kubectl:
+	gcloud container clusters get-credentials <GKE_CLUSTER_ID> --zone <CLUSTER_ZONE>
 
-	curl --location --request GET 'https://workshop-us63-dot-workshop-307013.ey.r.appspot.com/workshop-us63/book
+###### 2. Set the target GKE cluster:
+After credentials configuration, choose the target cluster to use from the listed contexts as `kubectl config get-contexts` as shown below:
 
+	CURRENT   NAME                                                        CLUSTER                                     AUTHINFO                                     
+	*         gke_workshop-307013_europe-west4-a_workshop-gke-cluster-1   gke_workshop-307013_europe-west4-...   
 
-##### 6. Clean up
-After testing your app service, delete it to avoid resource consumptions and costs
+After listing the available contexts switch to the target context choosing between the available ones under the **NAME** column as below:
 
-- **Delete app engine service:**
+	kubectl config use-context gke_workshop-307013_europe-west4-a_workshop-gke-cluster-1
 
-	  gcloud app services delete workshop-us63-exercise-6
+###### 3. Creating a Kubernetes deployment:
+After configuring kubectl to point the target cluster, run the `kubectl apply`
+	kubectl apply -f gke/deployment.yaml
+
+###### 4. Checking deployment
+
+	kubectl get pod
+
+	NAME                                READY   STATUS    RESTARTS   AGE
+	workshop-service-5b7698fc94-dmssj   1/1     Running   0          5m15s
+	workshop-service-5b7698fc94-pvxdg   1/1     Running   0          5m20s
+
+	kubectl get service
+
+	NAME               TYPE        CLUSTER-IP    EXTERNAL-IP   PORT(S)    AGE	
+	workshop-service   ClusterIP   10.96.12.37   <none>        8080/TCP   19m
+
+###### 5. Configuring network access to the deployed service
+To access to a ClusterIP service from your local machine execute `kubectl port-forward` in order to forward TCP 8080 traffic to the GKE cluster as shown below:
+
+	kubectl port-forward service/workshop-service 8080:8080
+
+###### Testing the service
+After deploying and enabled port-forwarding you are able to test the deployed service choosing between the following options:
+
+1. Accessing to the workshop service index page available at
+	`http://127.0.0.1:8080/workshop-us63/frontend/index.html`
+2. Executing `curl` request as below
+	`curl --location --request GET 'http://127.0.0.1:8080/workshop-us63/books'`
+
+##### 7. Clean up
+To avoid resource consumptions and costs delete the created GKE resources after testing:
+
+- **Delete gke service:**
+
+	kubectl delete all -l app=workshop-service
 
 - **Delete docker images:**
 
