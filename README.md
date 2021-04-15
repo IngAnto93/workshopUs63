@@ -118,7 +118,7 @@ After listing the available contexts switch to the target context choosing betwe
 After configuring kubectl to point the target cluster, run the `kubectl apply`
 	kubectl apply -f gke/deployment.yaml
 
-###### 4. Checking deployment
+###### 4. Checking Kubernetes resources
 
 	kubectl get pod
 
@@ -131,7 +131,7 @@ After configuring kubectl to point the target cluster, run the `kubectl apply`
 	NAME               TYPE        CLUSTER-IP    EXTERNAL-IP   PORT(S)    AGE	
 	workshop-service   ClusterIP   10.96.12.37   <none>        8080/TCP   19m
 
-###### 5. Configuring network access to the deployed service
+###### 5. Configuring network access to the created resources
 To access to a ClusterIP service from your local machine execute `kubectl port-forward` in order to forward TCP 8080 traffic to the GKE cluster as shown below:
 
 	kubectl port-forward service/workshop-service 8080:8080
@@ -141,8 +141,7 @@ After deploying and enabled port-forwarding you are able to test the deployed se
 
 1. Accessing to the workshop service index page available at
 	`http://127.0.0.1:8080/workshop-us63/frontend/index.html`
-2. Executing `curl` request as below
-	`curl --location --request GET 'http://127.0.0.1:8080/workshop-us63/books'`
+2. Executing `curl` request as`curl --location --request GET 'http://127.0.0.1:8080/workshop-us63/books'`
 
 ##### 7. Clean up
 To avoid resource consumptions and costs delete the created GKE resources after testing:
