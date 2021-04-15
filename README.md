@@ -18,7 +18,7 @@ The purpose of this exercise is to build and deploy the Docker image of your app
 
 #### 1. Enabling Cloud Build Service
 
-Before starting, you need to enable the cloud services (if not already enabled) related to Cloud Build, Artifact Registry and App Engine executing the following command(s):
+Before starting, you need to enable the cloud folllowing cloud services:
 
 	gcloud services enable cloudbuild.googleapis.com
 	gcloud services enable artifactregistry.googleapis.com
