@@ -33,7 +33,7 @@ spec:
     spec:
       containers:
         - name: workshop-service
-          image: europe-west4-docker.pkg.dev/workshop-307013/docker-repository/workshop-us63:1.9.0
+          image: europe-west4-docker.pkg.dev/workshop-sorrentinoraf/docker-repository/workshop-us63:1.9.0
           imagePullPolicy: Always
           ports:
             - containerPort: 8080
